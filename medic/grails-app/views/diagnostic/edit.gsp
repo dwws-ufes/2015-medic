@@ -11,10 +11,10 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'diagnostic', action: 'index')}">Diagnóstico</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">Diagnóstico</a>
             </li>
             <li>
-                <a href="${createLink(controller: 'diagnostic', action: 'edit', params: params)}">Editar</a>
+                <a href="${createLink(controller: controllerName, action: 'edit', params: params)}">Editar</a>
             </li>
         </ul>
 
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="${createLink(controller: 'diagnostic', action: 'index')}" class="btn btn-default">Cancelar</a>
+                    <a href="${createLink(controller: controllerName, action: 'index')}" class="btn btn-default">Cancelar</a>
                     <button type="submit" form="form" class="btn btn-primary">Salvar</button>
                 </div>
             </div>

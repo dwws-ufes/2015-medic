@@ -1,16 +1,18 @@
 package br.ufes.inf.nemo.dwws.controllers
 
-import br.ufes.inf.nemo.dwws.domains.Patient
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import br.ufes.inf.nemo.dwws.domains.Patient
 
 @Transactional(readOnly = true)
 class PatientController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-
+	def index(Integer max) {
+		//params.max = Math.min(max ?: 10, 100)
+		respond Patient.list(), model:[patientInstanceCount: Patient.count()]
+	}
 
     def create() {
         respond new Patient(params)
@@ -19,16 +21,11 @@ class PatientController {
     def edit(Patient patientInstance) {
         respond patientInstance
     }
-
-    def list()
-    {
-        respond Patient.findAll()
-    }
-
-    def index(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
-        respond Patient.list(), model:[patientInstanceCount: Patient.count()]
-    }
+	
+/*	def list()
+	{
+		respond Patient.list(), [formats:['json', 'xml']]
+	}*/
 
 
     def show(Patient patientInstance) {

@@ -9,45 +9,79 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-prescription" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="navbar">
-            <div class="nav">
-                <ul class="nav">
-                    <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
-        </div>
-		<div id="list-prescription" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-            <table class="table table-bordered table-striped">
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="medicine" title="${message(code: 'prescription.medicine.label', default: 'Medicine')}" />
-					
-						<th><g:message code="prescription.appointment.label" default="Appointment" /></th>
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${prescriptionInstanceList}" status="i" var="prescriptionInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${prescriptionInstance.id}">${fieldValue(bean: prescriptionInstance, field: "medicine")}</g:link></td>
-					
-						<td>${fieldValue(bean: prescriptionInstance, field: "appointment")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${prescriptionInstanceCount ?: 0}" />
-			</div>
-		</div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="${createLink(controller: controllerName, action: 'index')}">${message(code: controllerName + '.label', default: 'Appointment')}</a>
+            </li>
+        </ul>
+
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>        
+        
+        
+		<table id="table"
+	  		   data-toggle="table"
+	  		   data-click-to-select="true"
+	  		   data-single-select="true"
+			   data-url="${createLink(controller:controllerName, action:'index')}"
+			   data-method="get"
+			   data-height="385"
+			   data-side-pagination="client"
+			   data-pagination="true"
+			   data-page-list="[5, 10, 20, 50, 100, 200]"
+			   data-search="true"
+			   data-show-refresh="true"
+			   data-show-columns="true"
+			   data-show-toggle="true"
+			   data-show-filter="true"
+			   data-cache="false"
+			   data-show-export="true">
+		    <thead>
+			    <tr>
+			    	<th data-field="taxCode"
+			    		data-sortable="true"
+			    		data-align="right"
+			    		data-formatter="taxCodeFormatter">${message(code: 'patient.taxCode.label', default: 'Tax Code')}</th>
+			        <th data-field="name"
+			        	data-sortable="true"
+			        	data-align="left">${message(code: 'patient.name.label', default: 'Name')}</th>
+			        <th data-field="date"
+			        	data-sortable="true"
+			        	data-align="right"
+			        	data-formatter="dateFormatter">${message(code: 'appointment.date.label', default: 'Birth Date')}</th>
+			        <th data-field="disease"
+			        	data-sortable="true"
+			        	data-align="right">${message(code: 'diagnostic.disease.label', default: 'Disease')}</th>
+			        <th data-field="medicine"
+			        	data-sortable="true"
+			        	data-align="right">${message(code: 'prescription.medicine.label', default: 'Medicine')}</th>
+			        <th data-align="right">Operações</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+                <g:each in="${prescriptionInstanceList}" status="i" var="prescriptionInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td>${fieldValue(bean: prescriptionInstance.diagnostic.appointment.patient, field: "taxCode")}</td>
+                        <td>${fieldValue(bean: prescriptionInstance.diagnostic.appointment.patient, field: "name")}</td>
+                        <td>${formatDate(date: prescriptionInstance.diagnostic.appointment.date, type: 'datetime', dateStyle:'MEDIUM', timeStyle:'SHORT')}</td>  
+                        <td>${fieldValue(bean: prescriptionInstance.diagnostic, field: "disease")}</td>  
+                        <td>${fieldValue(bean: prescriptionInstance, field: "medicine")}</td>                    
+                        <td>
+							<a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Visualizar">
+                				<i class="fa fa-search"></i>
+            				</a>
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Editar">
+                				<i class="fa fa-pencil"></i>
+				            </a>
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Remover">
+                				<i class="fa fa-times"></i>
+				            </a>
+						</td>
+                    </tr>
+                </g:each>
+			</tbody>
+		</table>
 	</body>
 </html>

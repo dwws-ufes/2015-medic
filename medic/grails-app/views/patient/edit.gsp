@@ -11,12 +11,17 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'patient', action: 'index')}"><g:message code="patient.label"/></a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	<g:message code="${controllerName}.label" default="Patient"/>
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'patient', action: 'edit', params: params)}">Editar</a>
+                <a href="${createLink(controller: controllerName, action: 'edit', params: params)}">
+                	<g:message code="${controllerName}.edit.label" default="Edit"/>
+                </a>
             </li>
         </ul>
+        
 
 		<div id="edit-patient" class="content scaffold-edit" role="main">
 			<g:if test="${flash.message}">

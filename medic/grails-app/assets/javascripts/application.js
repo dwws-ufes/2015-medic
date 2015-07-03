@@ -9,7 +9,7 @@
 //= require_tree .
 //= require_self
 //= require bootstrap
-//= require jquery.dataTables
+//= require bootstrap-table
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {
@@ -21,6 +21,101 @@ if (typeof jQuery !== 'undefined') {
 	})(jQuery);
 }
 
+function taxCodeFormatter(value, row, index)
+{
+	val = '';
+	
+	for (i = 0; i < (11 - value.length); i++)
+	{
+	    val += '0' + val;
+	}
+	
+	val += value;
+	val=val.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+	val=val.replace(/(\d{3})(\d)/,"$1.$2")    //Coloca ponto entre o terceiro e o quarto dígitos
+	val=val.replace(/(\d{3})(\d)/,"$1.$2")    //Coloca ponto entre o setimo e o oitava dígitos
+	val=val.replace(/(\d{3})(\d)/,"$1-$2")   //Coloca ponto entre o decimoprimeiro e o decimosegundo dígitos
+	return val;
+}
+
+function dateFormatter(value, row, index)
+{
+	return value.replace(/T(.)+\z/i,"");
+}
+
+function dateTimeFormatter(value, row, index)
+{ 
+	return value.replace("T"," ").replace("Z","").replace(/:(\d)+\z/i,"");
+}
+
+
+
+
+
+
+
+
+
+
+/*
+$(document).ready(function() {
+
+    $('#table tbody').on( 'click', 'tr', function ()
+    {
+        if ( $(this).hasClass('selected') )
+        {
+            $(this).removeClass('selected');
+
+            $('#btn_edit').prop('href','');
+            $('#btn_show').prop('href','');
+            $('#btn_delete').prop('href','');
+
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'appointment')
+            {
+                $('#btn_add_diagnostic').prop('href', '');
+            }
+            
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'diagnostic')
+            {
+                $('#btn_add_prescription').prop('href', '');
+            }
+
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'patient')
+            {
+                $('#btn_add_appointment').prop('href', '');
+            }
+
+        }
+        else
+        {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+
+            $('#btn_edit').prop('href','/medic/' + $(document).find('#entity_name').text().toLocaleLowerCase() + '/edit/'+$(this).find('#id').text());
+            $('#btn_show').prop('href','/medic/' + $(document).find('#entity_name').text().toLocaleLowerCase() + '/show/'+$(this).find('#id').text());
+            $('#btn_delete').prop('href','/medic/' + $(document).find('#entity_name').text().toLocaleLowerCase() + '/show/'+$(this).find('#id').text());
+
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'appointment')
+            {
+                $('#btn_add_diagnostic').prop('href', '/medic/diagnostic/create/' + $(this).find('#id').text());
+            }
+            
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'diagnostic')
+            {
+                $('#btn_add_prescription').prop('href', '/medic/prescription/create/' + $(this).find('#id').text());
+            }
+
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'patient')
+            {
+                $('#btn_add_appointment').prop('href', '/medic/appointment/create/' + $(this).find('#id').text());
+            }
+        }
+    } );
+
+} );*/
+
+
+/*
 $(document).ready(function() {
 
     var table = $('#table').dataTable({
@@ -49,6 +144,11 @@ $(document).ready(function() {
             {
                 $('#btn_add_diagnostic').prop('href', '');
             }
+            
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'diagnostic')
+            {
+                $('#btn_add_prescription').prop('href', '');
+            }
 
             if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'patient')
             {
@@ -69,6 +169,11 @@ $(document).ready(function() {
             {
                 $('#btn_add_diagnostic').prop('href', '/medic/diagnostic/create/' + $(this).find('#id').text());
             }
+            
+            if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'diagnostic')
+            {
+                $('#btn_add_prescription').prop('href', '/medic/prescription/create/' + $(this).find('#id').text());
+            }
 
             if ($(document).find('#entity_name').text().toLocaleLowerCase() == 'patient')
             {
@@ -77,4 +182,28 @@ $(document).ready(function() {
         }
     } );
 
-} );
+} );*/
+
+
+/*
+$(document).ready(function(){
+	$("#mytable #checkall").click(function () {
+	        if ($("#mytable #checkall").is(':checked')) {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", true);
+	            });
+
+	        } else {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", false);
+	            });
+	        }
+	    });
+	    
+	    $("[data-toggle=tooltip]").tooltip();
+	});
+*/
+
+
+
+
