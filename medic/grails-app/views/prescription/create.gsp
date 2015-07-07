@@ -124,6 +124,9 @@
 		    <thead>
 			    <tr>
 			    	<th data-field="state" data-checkbox="true"></th>
+			    	<th data-field="disease"
+			    		data-sortable="true"
+			    		data-align="right">Doença</th>
 			    	<th data-field="brand"
 			    		data-sortable="true"
 			    		data-align="right">Medicamento</th>
@@ -144,7 +147,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#medicine').val($('#table').bootstrapTable('getSelections')[0]['brand']);">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#medicine').val($('#table').bootstrapTable('getSelections')[0]['brand']);">OK</button>
       </div>
     </div>
   </div>
