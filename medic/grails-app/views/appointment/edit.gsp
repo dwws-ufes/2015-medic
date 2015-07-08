@@ -11,10 +11,14 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'appointment', action: 'index')}">Consulta</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Appointment')}
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'appointment', action: 'edit', params: params)}">Editar</a>
+                <a href="${createLink(controller: controllerName, action: 'edit')}">
+                	${message(code: controllerName + '.edit.label', default: 'Edit')}
+                </a>
             </li>
         </ul>
 
@@ -65,8 +69,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="${createLink(controller: 'appointment', action: 'index')}" class="btn btn-default">${message(code: 'patient.button.cancel.label', default: 'Cancel')}</a>
-                    <button type="submit" form="form" class="btn btn-primary">Salvar</button>
+                    <a href="${createLink(controller: 'appointment', action: 'index')}" class="btn btn-default">${message(code: controllerName + '.cancel.label', default: 'Cancel')}</a>
+                    <button type="submit" form="form" class="btn btn-primary">${message(code: controllerName + '.save.label', default: 'Save')}</button>
                 </div>
             </div>
 		</div>

@@ -5,7 +5,7 @@ class Appointment {
     Date date;
 
     static belongsTo = [patient: Patient]
-    static hasMany = [diagnostics: Diagnostic, prescriptions: Prescription]
+    static hasMany = [diagnostics: Diagnostic]
 
     String toString() {
         return "Consulta "+this.id;
@@ -14,6 +14,11 @@ class Appointment {
 
     static constraints = {
         date(nullable: false)
-    }
-
+    }	
+	
+	static rdf = [
+		'':'http://dbpedia.org/ontology/Meeting',
+		'date':'http://dbpedia.org/ontology/startDate'
+	]
+	
 }

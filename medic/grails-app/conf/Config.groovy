@@ -15,6 +15,7 @@ grails.project.groupId = appName // change this to alter the default package nam
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
+grails.mime.use.accept.header = true
 grails.mime.types = [ // the first one is the default format
     all:           '*/*', // 'all' maps to '*' or the first available format in withFormat
     atom:          'application/atom+xml',
@@ -28,7 +29,8 @@ grails.mime.types = [ // the first one is the default format
     rss:           'application/rss+xml',
     text:          'text/plain',
     hal:           ['application/hal+json','application/hal+xml'],
-    xml:           ['text/xml', 'application/xml']
+    xml:           ['text/xml', 'application/xml'],
+    rdf:           ['text/rdf', 'application/rdf', 'application/rdf+xml']
 ]
 
 // URL Mapping Cache Max Size, defaults to 5000

@@ -11,12 +11,17 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'patient', action: 'index')}"><g:message code="patient.label"/></a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Patient')}
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'patient', action: 'edit', params: params)}">Editar</a>
+                <a href="${createLink(controller: controllerName, action: 'edit', params: params)}">
+                	${message(code: controllerName + '.edit.label', default: 'Editar')}
+                </a>
             </li>
         </ul>
+        
 
 		<div id="edit-patient" class="content scaffold-edit" role="main">
 			<g:if test="${flash.message}">
@@ -40,8 +45,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="${createLink(controller: 'patient', action: 'index')}" class="btn btn-default">${message(code: 'patient.button.cancel.label', default: 'Cancel')}</a>
-                    <button type="submit" form="form" class="btn btn-primary">${message(code: 'patient.button.save.label', default: 'Save')}</button>
+                    <a href="${createLink(controller: 'patient', action: 'index')}" class="btn btn-default">${message(code: controllerName + '.cancel.label', default: 'Cancel')}</a>
+                    <button type="submit" form="form" class="btn btn-primary">${message(code:  controllerName + '.save.label', default: 'Save')}</button>
                 </div>
             </div>
 		</div>

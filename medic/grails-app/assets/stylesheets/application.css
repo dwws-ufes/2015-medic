@@ -10,7 +10,19 @@
 *= require mobile
 *= require_self
 *= require bootstrap
-*= require jquery.dataTables
-*= require jquery.dataTables_themeroller
+*= require bootstrap-table
 *= require cerulean
 */
+
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+body{margin-top:20px;}
+.fa-fw {width: 2em;}
+
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+}

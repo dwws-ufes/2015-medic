@@ -1,6 +1,9 @@
+
+
+
+
 package br.ufes.inf.nemo.dwws.controllers
 
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 /**
@@ -16,5 +19,6 @@ class PatientControllerSpec extends Specification {
     }
 
     void "test something"() {
+		
     }
 }

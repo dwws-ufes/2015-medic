@@ -10,12 +10,9 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class DiagnosticController {
 
-    static allowedMethods = [save: "POST",
-                             update: "PUT",
-                             delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
+    def index() {
         respond Diagnostic.list(), model:[diagnosticInstanceCount: Diagnostic.count()]
     }
 

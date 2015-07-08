@@ -1,15 +1,5 @@
 <%@ page import="br.ufes.inf.nemo.dwws.domains.Patient" %>
 
-<!--
-<div class="form-group">
-    <div class="input-group">
-        <div class="input-group-addon" style="width: 200px;"><g:message code="patient.taxCode.label" default="Tax Code" /></div>
-        <g:textField name="taxCode" maxlength="11" required="" value="${patientInstance?.taxCode}" placeholder="Tax Code" class="form-control"/>
-        <input class="form-control" type="email" placeholder="Enter email">
-    </div>
-</div>-->
-
-
 <div class="form-group">
     <label for="taxCode"  class="col-lg-5 control-label">
         <g:message code="patient.taxCode.label" default="Tax Code" />

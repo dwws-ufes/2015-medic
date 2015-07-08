@@ -1,28 +1,40 @@
 package br.ufes.inf.nemo.dwws.controllers
 
-import br.ufes.inf.nemo.dwws.domains.Prescription
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import br.ufes.inf.nemo.dwws.domains.Appointment
+import br.ufes.inf.nemo.dwws.domains.Diagnostic;
+import br.ufes.inf.nemo.dwws.domains.Prescription
 
 @Transactional(readOnly = true)
 class PrescriptionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
-        respond Prescription.list(), model:[prescriptionInstanceCount: Prescription.count()]
+	
+	def prescriptionService
+	
+    def index()
+	{
+		respond Prescription.list() 
     }
 
     def show(Prescription prescriptionInstance) {
         respond prescriptionInstance
     }
+	
+	def list()
+	{
+		respond prescriptionService.listDeseases(), [formats:['json']] 
+	}
 
-    def create() {
-        respond new Prescription(params)
+    def create(Diagnostic diagnosticInstance) {
+
+		Prescription prescriptionInstace = new Prescription();
+		diagnosticInstance.addToPrescriptions(prescriptionInstace)		
+		
+        respond prescriptionInstace
     }
-
+	
     @Transactional
     def save(Prescription prescriptionInstance) {
         if (prescriptionInstance == null) {

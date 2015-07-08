@@ -1,16 +1,45 @@
 package br.ufes.inf.nemo.dwws.controllers
 
-import br.ufes.inf.nemo.dwws.domains.Patient
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+
+import org.codehaus.groovy.grails.web.mapping.LinkGenerator
+
+import br.ufes.inf.nemo.dwws.domains.Appointment;
+import br.ufes.inf.nemo.dwws.domains.Diagnostic;
+import br.ufes.inf.nemo.dwws.domains.Patient
+import br.ufes.inf.nemo.dwws.domains.Prescription;
+
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype
+import com.hp.hpl.jena.datatypes.xsd.XSDDateTime
+import com.hp.hpl.jena.rdf.model.Literal
+import com.hp.hpl.jena.rdf.model.Model
+import com.hp.hpl.jena.rdf.model.ModelFactory
+import com.hp.hpl.jena.rdf.model.Property
+import com.hp.hpl.jena.rdf.model.Resource
+import com.hp.hpl.jena.vocabulary.DCTerms;
+import com.hp.hpl.jena.vocabulary.RDF
 
 @Transactional(readOnly = true)
 class PatientController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-
+	
+	def LinkGenerator grailsLinkGenerator
+	
+	def patientService
+	
+	def index()
+	{
+		request.withFormat {
+            rdf { render patientService.toRDF() }
+            '*' { respond Patient.list() }
+        }
+	}
+	
+	def rdf(){
+		render "Passei RDF ${request.requestURI}"
+	}
 
     def create() {
         respond new Patient(params)
@@ -19,17 +48,6 @@ class PatientController {
     def edit(Patient patientInstance) {
         respond patientInstance
     }
-
-    def list()
-    {
-        respond Patient.findAll()
-    }
-
-    def index(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
-        respond Patient.list(), model:[patientInstanceCount: Patient.count()]
-    }
-
 
     def show(Patient patientInstance) {
         respond patientInstance
