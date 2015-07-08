@@ -48,12 +48,6 @@ class PatientController {
     def edit(Patient patientInstance) {
         respond patientInstance
     }
-	
-/*	def list()
-	{
-		respond Patient.list(), [formats:['json', 'xml']]
-	}*/
-
 
     def show(Patient patientInstance) {
         respond patientInstance
