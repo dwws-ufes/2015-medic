@@ -13,6 +13,8 @@ Medic usa o banco de dados MySQL para armazenamento das informações e as segui
 #####Desenvolvimento:
 Medic foi desenvolvido usando a IDE [GGTS]. Basta fazer o download da IDE, descompactá-la, executá-la e importar o projeto como Grails Project para o seu workspace.
 
+Fazer o download das bibliotecas do [JENA], descompactar o arquivo e copiar as bibliotecas da pasta lib para a pasta lib do projeto do Medic.
+
 #####Execução:
 Uma vez importado o projeto na IDE [GGTS], basta clicar com o botão direito do mouse sobre o projeto e executar o comando de execução: Run As ▸ Grails Command (run-app). 
 
@@ -23,4 +25,5 @@ Agora basta aguardar o carregamento da aplicação e acessá-la clicando [aqui].
 
 [GGTS]:http://spring.io/tools/ggts/all
 [GRAILS]:https://grails.org/download.html
+[JENA]:http://download.nextag.com/apache/jena/binaries/apache-jena-2.13.0.zip
 [aqui]:http://localhost:8080/medic/
