@@ -73,7 +73,7 @@
 				</nav>
 	        </div>
 	        <div class="row clearfix">
-	                    <g:layoutBody/>
+				<g:layoutBody/>
 	        </div>
 	    </div>
 	</div>

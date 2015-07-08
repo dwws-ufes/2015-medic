@@ -11,12 +11,12 @@
         <ul class="breadcrumb">
             <li>
                 <a href="${createLink(controller: controllerName, action: 'index')}">
-                	<g:message code="${controllerName}.label"/>
+                	${message(code: controllerName + '.label', default: 'Patient')}
                 </a>
             </li>
             <li>
                 <a href="${createLink(controller: controllerName, action: 'create')}">
-                	<g:message code="${controllerName}.create.label"/>
+                	${message(code: controllerName + '.add.label', default: 'Add')}
                 </a>
             </li>
         </ul>
@@ -45,14 +45,10 @@
 		    </div>
 		    <div class="modal-footer">
 		        <a href="${request.getHeader('referer')}"
-		           class="btn btn-default">${message(code: 'default.button.cancel.label', default: 'Cancel')}</a>
+		           class="btn btn-default">${message(code: controllerName + '.cancel.label', default: 'Cancel')}</a>
 		        <button type="submit"
 		        		form="form"
-		        		class="btn btn-primary">${message(code: 'default.button.save.label', default: 'Save')}</button>
-		        <!-- <button type="submit"
-		        		form="form"
-		        		class="btn btn-primary"
-		        		onclick="$('#form').get(0).setAttribute('action', 'delete');">Remover</button> -->
+		        		class="btn btn-primary">${message(code: controllerName + '.save.label', default: 'Save')}</button>
 		    </div>
 		</div>
 

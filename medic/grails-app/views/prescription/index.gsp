@@ -11,7 +11,9 @@
 	<body>
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: controllerName, action: 'index')}">${message(code: controllerName + '.label', default: 'Appointment')}</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Appointment')}
+                </a>
             </li>
         </ul>
 
@@ -49,14 +51,14 @@
 			        <th data-field="date"
 			        	data-sortable="true"
 			        	data-align="right"
-			        	data-formatter="dateFormatter">${message(code: 'appointment.date.label', default: 'Birth Date')}</th>
+			        	data-formatter="dateFormatter">${message(code: 'appointment.date.label', default: 'Date')}</th>
 			        <th data-field="disease"
 			        	data-sortable="true"
 			        	data-align="right">${message(code: 'diagnostic.disease.label', default: 'Disease')}</th>
 			        <th data-field="medicine"
 			        	data-sortable="true"
-			        	data-align="right">${message(code: 'prescription.medicine.label', default: 'Medicine')}</th>
-			        <th data-align="right">Operações</th>
+			        	data-align="right">${message(code: controllerName + '.medicine.label', default: 'Medicine')}</th>
+			        <th data-align="right">${message(code: 'default.operations.label', default: 'Operations')}</th>
 			    </tr>
 		    </thead>
 		    <tbody>
@@ -69,13 +71,16 @@
                         <td>${fieldValue(bean: prescriptionInstance.diagnostic, field: "disease")}</td>  
                         <td>${fieldValue(bean: prescriptionInstance, field: "medicine")}</td>                    
                         <td>
-							<a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Visualizar">
+							<a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>"
+							   title="${message(code: controllerName + '.show.label', default: 'Visualizar')}">
                 				<i class="fa fa-search"></i>
             				</a>
-				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Editar">
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>"
+				               title="${message(code: controllerName + '.edit.label', default: 'Edit')}">
                 				<i class="fa fa-pencil"></i>
 				            </a>
-				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>" title="Remover">
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: prescriptionInstance, field: "id")}"/>"
+				               title="${message(code: controllerName + '.delete.label', default: 'Remover')}">
                 				<i class="fa fa-times"></i>
 				            </a>
 						</td>

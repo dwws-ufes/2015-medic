@@ -12,10 +12,14 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'patient', action: 'index')}"><g:message code="patient.label"/></a>
+                <a href="${createLink(controller: 'patient', action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Patient')}
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'patient', action: 'show', params: params)}">Visualizar</a>
+                <a href="${createLink(controller: 'patient', action: 'show', params: params)}">
+                	${message(code: controllerName + '.label', default: 'Show')}
+                </a>
             </li>
         </ul>
 
@@ -68,8 +72,8 @@
                 <div class="modal-footer">
                     <g:form url="[resource:patientInstance, action:'delete']" method="DELETE" id="form2">
                         <fieldset class="form-actions">
-                            <a href="${createLink(controller: 'patient', action: 'edit', params: params)}" class="btn btn-default">Editar</a>
-                            <button type="submit" form="form2" class="btn btn-default" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Remover</button>
+                            <a href="${createLink(controller: 'patient', action: 'edit', params: params)}" class="btn btn-default">${message(code: controllerName + '.edit.label', default: 'Edit')}</a>
+                            <button type="submit" form="form2" class="btn btn-default" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">${message(code: controllerName + '.delete.label', default: 'Delete')}</button>
                             <a href="${createLink(controller: 'patient', action: 'index')}" class="btn btn-default">Ok</a>
                         </fieldset>
                     </g:form>

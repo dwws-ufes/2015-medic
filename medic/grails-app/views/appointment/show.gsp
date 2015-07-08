@@ -11,10 +11,14 @@
 	<body>
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: 'appointment', action: 'index')}">Consulta</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Appointment')}
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'appointment', action: 'show', params: params)}">Visualizar</a>
+                <a href="${createLink(controller: controllerName, action: 'show')}">
+                	${message(code: controllerName + '.show.label', default: 'Show')}
+                </a>
             </li>
         </ul>
 
@@ -65,8 +69,8 @@
                 <div class="modal-footer">
                     <g:form url="[resource:appointmentInstance, action:'delete']" method="DELETE" id="form2">
                         <fieldset class="form-actions">
-                            <a href="${createLink(controller: 'appointment', action: 'edit', params: params)}" class="btn btn-default">Editar</a>
-                            <button type="submit" form="form2" class="btn btn-default" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Remover</button>
+                            <a href="${createLink(controller: 'appointment', action: 'edit', params: params)}" class="btn btn-default">${message(code: controllerName + '.edit.label', default: 'Edit')}</a>
+                            <button type="submit" form="form2" class="btn btn-default" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">${message(code: controllerName + '.delete.label', default: 'Delete')}</button>
                             <a href="${createLink(controller: 'appointment', action: 'index')}" class="btn btn-default">Ok</a>
                         </fieldset>
                     </g:form>

@@ -12,7 +12,9 @@
 	
 		<ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: controllerName, action: 'index')}">${entityName}</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Patient')}
+                </a>
             </li>
         </ul>
 	
@@ -22,7 +24,7 @@
 			   title="<g:message code="default.add.label" 
 			   					 default="${entityName}" 
 			   					 args="[entityName]"/>">
-			   <i class="fa fa-plus fa-fw"></i>${message(code: controllerName + '.create.label', default: 'Add')}</a>
+			   <i class="fa fa-plus fa-fw"></i>${message(code: controllerName + '.add.label', default: 'Add')}</a>
 		</div>
 		
 		<g:if test="${flash.message}">
@@ -49,10 +51,10 @@
 			   data-show-export="true">
 		    <thead>
 			    <tr>
-			    	<th data-field="taxCode" data-sortable="true" data-align="right" data-formatter="taxCodeFormatter">${message(code: 'patient.taxCode.label', default: 'TAX CODE')}</th>
-			        <th data-field="name" data-sortable="true" data-align="left" >${message(code: 'patient.name.label', default: 'NAME')}</th>
-			        <th data-field="birthDate" data-sortable="true" data-align="right" data-formatter="dateFormatter">${message(code: 'patient.birthDate.label', default: 'BIRTH DATE')}</th>
-			        <th data-align="right">Operações</th>
+			    	<th data-field="taxCode" data-sortable="true" data-align="right" data-formatter="taxCodeFormatter">${message(code: 'patient.taxCode.label', default: 'Tax Code')}</th>
+			        <th data-field="name" data-sortable="true" data-align="left" >${message(code: 'patient.name.label', default: 'Name')}</th>
+			        <th data-field="birthDate" data-sortable="true" data-align="right" data-formatter="dateFormatter">${message(code: 'patient.birthDate.label', default: 'Birth Date')}</th>
+			        <th data-align="right">${message(code: 'default.operations.label', default: 'Operations')}</th>
 			    </tr>
 		    </thead>
 		    <tbody>
@@ -69,26 +71,25 @@
                         	<a href="<g:createLink controller="${controllerName}"
                         						   action="show"
                         						   id="${fieldValue(bean: patientInstance, field: "id")}"/>"
-                        	   title="Visualizar">
+                        	   title="${message(code: controllerName + '.show.label', default: 'Show')}">
                 				<i class="fa fa-search"></i>
             				</a>
 				            <a href="<g:createLink controller="${controllerName}"
 				            					   action="show"
 				            					   id="${fieldValue(bean: patientInstance, field: "id")}"/>"
-				          	   title="Editar">
+				          	   title="${message(code: controllerName + '.edit.label', default: 'Edit')}">
                 				<i class="fa fa-pencil"></i>
 				            </a>
 				            <a href="<g:createLink controller="${controllerName}" 
 				            					   action="show"
 				            					   id="${fieldValue(bean: patientInstance, field: "id")}"/>"
-				               title="Remover">
+				               title="${message(code: controllerName + '.delete.label', default: 'Delete')}">
                 				<i class="fa fa-times"></i>
 				            </a>
 				            <a href="<g:createLink controller="appointment"
                         	   					   action="create"
                         	   					   id="${fieldValue(bean: patientInstance, field: "id")}"/>"
-                        	   title="<g:message code="appointment.label" 
-                        	   					 default="Appointment"/>">
+                        	   title="${message(code: controllerName + '.add.appointment.label', default: 'Add Appointment')}">
                 				<i class="fa fa-calendar"></i>
             				</a>
 							

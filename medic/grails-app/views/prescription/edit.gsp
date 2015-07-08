@@ -11,10 +11,14 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: controllerName, action: 'index')}">Diagnóstico</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                	${message(code: controllerName + '.label', default: 'Prescription')}
+                </a>
             </li>
             <li>
-                <a href="${createLink(controller: controllerName, action: 'edit', params: params)}">Editar</a>
+                <a href="${createLink(controller: controllerName, action: 'edit', params: params)}">
+                	${message(code: controllerName + '.edit.label', default: 'Edit')}
+                </a>
             </li>
         </ul>
         
@@ -78,9 +82,9 @@
                 </div>
 
                 <div class="modal-footer">
-                	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"/>Medicamentos</button>
-                    <a href="${createLink(controller: controllerName, action: 'index')}" class="btn btn-default">Cancelar</a>
-                    <button type="submit" form="form" class="btn btn-primary">Salvar</button>
+                	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"/>${message(code: controllerName + '.medicines.label', default: 'Medicines')}</button>
+                    <a href="${createLink(controller: controllerName, action: 'index')}" class="btn btn-default">${message(code: controllerName + '.cancel.label', default: 'Cancel')}</a>
+                    <button type="submit" form="form" class="btn btn-primary">${message(code: controllerName + '.save.label', default: 'Save')}</button>
                 </div>
             </div>
 		</div>
@@ -95,7 +99,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Medicamentos</h4>
+        <h4 class="modal-title" id="myModalLabel">${message(code: controllerName + '.medicines.label', default: 'Medicines')}</h4>
       </div>
       <div class="modal-body">
         
@@ -121,16 +125,16 @@
 			    	<th data-field="state" data-checkbox="true"></th>
 			    	<th data-field="brand"
 			    		data-sortable="true"
-			    		data-align="right">Medicamento</th>
+			    		data-align="right">${message(code: controllerName + '.medicine.label', default: 'Medicine')}</th>
 			        <th data-field="drug"
 			        	data-sortable="true"
-			        	data-align="left">Droga</th>
+			        	data-align="left">${message(code: controllerName + '.drug.label', default: 'Drug')}</th>
 			        <th data-field="dosage"
 			        	data-sortable="false"
-			        	data-align="right">Dosage</th>
+			        	data-align="right">${message(code: controllerName + '.dosage.label', default: 'Dosage')}</th>
 			        <th data-field="indication"
 			        	data-sortable="false"
-			        	data-align="right">Indication</th>
+			        	data-align="right">${message(code: controllerName + '.indication.label', default: 'Indication')}</th>
 			    </tr>
 		    </thead>
 		</table>
@@ -138,8 +142,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#medicine').val($('#table').bootstrapTable('getSelections')[0]['brand']);">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">${message(code: controllerName + '.close.label', default: 'Close')}</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#medicine').val($('#table').bootstrapTable('getSelections')[0]['brand']);">Ok</button>
       </div>
     </div>
   </div>

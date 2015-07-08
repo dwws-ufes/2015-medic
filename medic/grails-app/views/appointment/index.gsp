@@ -12,7 +12,8 @@
         
 		<ul class="breadcrumb">
             <li>
-                <a href="${createLink(controller: controllerName, action: 'index')}">${message(code: controllerName + '.label', default: 'Appointment')}</a>
+                <a href="${createLink(controller: controllerName, action: 'index')}">
+                 ${message(code: controllerName + '.label', default: 'Appointment')}</a>
             </li>
         </ul>
 
@@ -42,15 +43,15 @@
 			    	<th data-field="taxCode"
 			    		data-sortable="true"
 			    		data-align="right"
-			    		data-formatter="taxCodeFormatter">${message(code: 'patient.taxCode.label', default: 'TAX CODE')}</th>
+			    		data-formatter="taxCodeFormatter">${message(code: 'patient.taxCode.label', default: 'Tax Code')}</th>
 			        <th data-field="name"
 			        	data-sortable="true"
-			        	data-align="left">${message(code: 'patient.name.label', default: 'NAME')}</th>
+			        	data-align="left">${message(code: 'patient.name.label', default: 'Name')}</th>
 			        <th data-field="birthDate"
 			        	data-sortable="true"
 			        	data-align="right"
-			        	data-formatter="dateFormatter">${message(code: 'patient.birthDate.label', default: 'BIRTH DATE')}</th>
-			        <th data-align="right">Operações</th>
+			        	data-formatter="dateFormatter">${message(code: 'patient.birthDate.label', default: 'Birth Date')}</th>
+			        <th data-align="right">${message(code: 'default.operations.label', default: 'Operations')}</th>
 			    </tr>
 		    </thead>
 		    <tbody>
@@ -60,16 +61,21 @@
                         <td>${fieldValue(bean: appointmentInstance.patient, field: "taxCode")}</td>
                         <td>${fieldValue(bean: appointmentInstance.patient, field: "name")}</td>
                         <td>${formatDate(date: appointmentInstance.date, type: 'datetime', dateStyle:'MEDIUM', timeStyle:'SHORT')}</td>                        
-                        <td><a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>" title="Visualizar">
+                        <td>
+                        	<a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>"
+                               title="${message(code: controllerName + '.show.label', default: 'Show')}">
                 				<i class="fa fa-search"></i>
             				</a>
-				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>" title="Editar">
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>"
+				               title="${message(code: controllerName + '.edit.label', default: 'Edit')}">
                 				<i class="fa fa-pencil"></i>
 				            </a>
-				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>" title="Remover">
+				            <a href="<g:createLink controller="${controllerName}" action="show" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>"
+				               title="${message(code: controllerName + '.delete.label', default: 'Delete')}">
                 				<i class="fa fa-times"></i>
 				            </a>
-                        	<a href="<g:createLink controller="diagnostic" action="create" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>" title="Diagnóstico">
+                        	<a href="<g:createLink controller="diagnostic" action="create" id="${fieldValue(bean: appointmentInstance, field: "id")}"/>"
+                        	   title="${message(code: controllerName + '.add.diagnotic.label', default: 'Add Diagnostic')}">
                 				<i class="fa fa-stethoscope"></i>
             				</a>
                         	

@@ -1,18 +1,5 @@
 <%@ page import="br.ufes.inf.nemo.dwws.domains.Prescription" %>
 
-<!-- 
-<div class="form-group>
-	<label class="col-lg-5 control-label">
-		<g:message code="prescription.medicine.label" default="Medicine" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="col-lg-7">
-        <span class="uneditable-input" aria-labelledby="date-label">
-            <g:textField name="medicine" required="" value="${prescriptionInstance?.medicine}"/>
-        </span>
-    </div>
-</div>  -->
-
 <div class="form-group">
     <label for="medicine" class="col-lg-5 control-label">
         <g:message code="prescription.medicine.label" default="Medicine" />
